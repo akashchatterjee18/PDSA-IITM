@@ -329,9 +329,7 @@ def no_duplicates(L):
 Each unordered pair is compared at most once. If no duplicates exist, the comparison count is:
 
 $$
-
 (n-1)+(n-2)+\cdots+2+1=\frac{n(n-1)}2
-
 $$
 
 - **Worst-case time:** Θ(n²).
@@ -376,16 +374,14 @@ def number_of_bits(n):
 For a positive integer n, the number of binary digits is:
 
 $$
-
 \lfloor\log_2 n\rfloor+1
-
 $$
 
 - Measured against the numeric value n, the loop takes Θ(log n) iterations.
 - If input size is the number of binary digits b, the algorithm takes Θ(b) iterations.
 - Assumption: n ≥ 1.
 
-## 9. Recursion and Recurrence Relations
+## Recursion and Recurrence Relations
 
 Recursive algorithms call themselves on smaller inputs. Use a recurrence to describe their work.
 
@@ -404,75 +400,42 @@ Let M(n) be the minimum number of moves.
 Base case:
 
 $$
-
 M(1)=1
-
 $$
 
 Recurrence:
 
 $$
-
 M(n)=M(n-1)+1+M(n-1)=2M(n-1)+1
-
 $$
 
 Expanding:
 
 $$
-
 \begin{aligned}
 M(n)&=2M(n-1)+1\\
 &=4M(n-2)+3\\
 &=8M(n-3)+7\\
 &=\cdots=2^n-1
 \end{aligned}
-
 $$
 
 Thus:
 
 $$
-
 \boxed{M(n)=2^n-1}
-
 $$
 
 For five disks:
 
 $$
-
 M(5)=2^5-1=31\text{ moves}
-
 $$
 
 The number of moves is Θ(2ⁿ), so the algorithm grows exponentially.
 
-### Example 2: Binary search
 
-Each step discards approximately half of the remaining interval.
-
-$$
-
-T(n)=T(n/2)+\Theta(1)
-
-$$
-
-The number of levels is approximately log₂ n, so time is Θ(log n). A recursive implementation uses Θ(log n) stack space; an iterative implementation can use Θ(1) auxiliary space.
-
-### Example 3: Merge sort
-
-Merge sort recursively sorts two halves and merges them in linear time.
-
-$$
-
-T(n)=2T(n/2)+\Theta(n)
-
-$$
-
-There are Θ(log n) levels and Θ(n) work per level, giving Θ(n log n) time.
-
-## 10. Quick Reference: Code Patterns
+## Quick Reference: Code Patterns
 
 | Pattern | Typical time |
 |---|---|
@@ -488,49 +451,6 @@ There are Θ(log n) levels and Θ(n) work per level, giving Θ(n log n) time.
 
 These are common patterns, not universal rules. Inspect the actual loop bounds and operations.
 
-## 11. Practice Questions
-
-Find the time complexity of each snippet.
-
-### Q1
-
-~~~python
-for i in range(n):
-    print(i)
-~~~
-
-### Q2
-
-~~~python
-for i in range(n):
-    for j in range(n):
-        print(i, j)
-~~~
-
-### Q3
-
-~~~python
-i = n
-while i > 1:
-    i //= 2
-~~~
-
-### Q4
-
-~~~python
-for i in range(n):
-    for j in range(5):
-        print(i, j)
-~~~
-
-### Answers
-
-1. Θ(n): one loop with n iterations.
-2. Θ(n²): n iterations for each of n outer iterations.
-3. Θ(log n): the value is halved each iteration.
-4. Θ(n): the inner loop runs a fixed five times, so total work is proportional to 5n.
-
----
 
 ## Key Takeaways
 
