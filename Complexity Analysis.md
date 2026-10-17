@@ -77,15 +77,19 @@ Suppose there are 10⁹ Aadhaar records and 10⁹ SIM records, and we want to id
 
 The number of pairs is approximately:
 
-\[
+$
+
 10^9 \times 10^9 = 10^{18}
-\]
+
+$
 
 At 10⁷ basic operations per second:
 
-\[
+$
+
 \frac{10^{18}}{10^7}=10^{11}\text{ seconds}
-\]
+
+$
 
 That is approximately **3,170 years**, using about 31.6 million seconds per year.
 
@@ -93,15 +97,19 @@ That is approximately **3,170 years**, using about 31.6 million seconds per year
 
 If one collection is sorted or indexed, each lookup can take about log₂ n comparisons rather than checking all n records.
 
-\[
+$
+
 \log_2(10^9)\approx30
-\]
+
+$
 
 For 10⁹ lookups, this is approximately:
 
-\[
+$
+
 10^9\times30=3\times10^{10}\text{ comparisons}
-\]
+
+$
 
 At 10⁷ operations per second, this is about 3,000 seconds, or **50 minutes**, under the simplified assumption that lookup comparisons dominate and the data is already sorted/indexed. Sorting, disk I/O, data cleaning, and overhead can add significant time.
 
@@ -115,17 +123,21 @@ Given n points on a screen, find the pair with the smallest distance.
 
 Compare every unique pair:
 
-\[
+$
+
 \binom{n}{2}=\frac{n(n-1)}{2}
-\]
+
+$
 
 Therefore, time complexity is Θ(n²).
 
 For n = 100,000:
 
-\[
+$
+
 \frac{100000\times99999}{2}\approx5\times10^9\text{ pairs}
-\]
+
+$
 
 At a hypothetical 10⁷ operations per second, this is roughly 500 seconds (about 8.3 minutes) if each pair takes one operation. Actual distance calculations and language overhead may increase the time.
 
@@ -133,9 +145,11 @@ At a hypothetical 10⁷ operations per second, this is roughly 500 seconds (abou
 
 A standard divide-and-conquer closest-pair algorithm runs in O(n log n) time under its usual assumptions.
 
-\[
+$
+
 n\log_2 n=100000\times\log_2(100000)\approx1.66\times10^6
-\]
+
+$
 
 This is dramatically fewer operations than about 5 × 10⁹ pair comparisons.
 
@@ -147,15 +161,19 @@ Asymptotic notation describes growth as input size becomes large. It does not pr
 
 ### Big O — upper bound
 
-\[
+$
+
 f(n)\in O(g(n))
-\]
+
+$
 
 There must exist constants c > 0 and n₀ ≥ 0 such that:
 
-\[
+$
+
 0\le f(n)\le c\,g(n)\quad\text{for all }n\ge n_0
-\]
+
+$
 
 Eventually, f(n) is at most a constant multiple of g(n).
 
@@ -163,9 +181,11 @@ Eventually, f(n) is at most a constant multiple of g(n).
 
 For n ≥ 1, n ≤ n² and 1 ≤ n². Therefore:
 
-\[
+$
+
 100n+5\le100n^2+5n^2=105n^2
-\]
+
+$
 
 Choose c = 105 and n₀ = 1.
 
@@ -175,29 +195,37 @@ A tighter bound is also possible: for n ≥ 1, 100n + 5 ≤ 105n, so 100n + 5 �
 
 For n ≥ 1:
 
-\[
+$
+
 100n^2+20n+5\le100n^2+20n^2+5n^2=125n^2
-\]
+
+$
 
 Choose c = 125 and n₀ = 1.
 
 ### Big Omega — lower bound
 
-\[
+$
+
 f(n)\in\Omega(g(n))
-\]
+
+$
 
 There must exist constants c > 0 and n₀ ≥ 0 such that:
 
-\[
+$
+
 0\le c\,g(n)\le f(n)\quad\text{for all }n\ge n_0
-\]
+
+$
 
 **Example:**
 
-\[
+$
+
 n^3\in\Omega(n^2)
-\]
+
+$
 
 For n ≥ 1, n³ ≥ n². Choose c = 1 and n₀ = 1.
 
@@ -205,41 +233,53 @@ Lower bounds can also describe a limit that applies to every algorithm solving a
 
 ### Big Theta — tight bound
 
-\[
+$
+
 f(n)\in\Theta(g(n))
-\]
+
+$
 
 There must exist constants c₁, c₂ > 0 and n₀ ≥ 0 such that:
 
-\[
+$
+
 c_1g(n)\le f(n)\le c_2g(n)\quad\text{for all }n\ge n_0
-\]
+
+$
 
 This means f(n) has matching asymptotic upper and lower bounds.
 
 **Example:**
 
-\[
+$
+
 f(n)=\frac{n(n-1)}2=\frac{n^2}2-\frac n2
-\]
+
+$
 
 For n ≥ 1:
 
-\[
+$
+
 f(n)\le\frac{n^2}{2}
-\]
+
+$
 
 Choose c₂ = 1/2. For n ≥ 2, n ≤ n²/2, so:
 
-\[
+$
+
 f(n)=\frac{n^2}2-\frac n2\ge\frac{n^2}4
-\]
+
+$
 
 Choose c₁ = 1/4 and n₀ = 2. Therefore:
 
-\[
+$
+
 \frac{n^2}4\le f(n)\le\frac{n^2}2\quad(n\ge2)
-\]
+
+$
 
 Hence f(n) ∈ Θ(n²).
 
@@ -253,9 +293,11 @@ Big O is often used to report worst-case complexity, but Big O does not itself m
 
 ### Higher-order functions cannot be bounded by lower-order ones
 
-\[
+$
+
 n^3\notin O(n^2)
-\]
+
+$
 
 No fixed constant c can make n³ ≤ cn² for all sufficiently large n, because this would require n ≤ c forever.
 
@@ -265,17 +307,21 @@ No fixed constant c can make n³ ≤ cn² for all sufficiently large n, because 
 
 If f₁(n) ∈ O(g₁(n)) and f₂(n) ∈ O(g₂(n)), then:
 
-\[
+$
+
 f_1(n)+f_2(n)\in O(\max(g_1(n),g_2(n)))
-\]
+
+$
 
 For sequential phases, add the running times and keep the dominant growth rate.
 
 Example: phase A takes O(n), phase B takes O(n²):
 
-\[
+$
+
 O(n)+O(n^2)=O(n^2)
-\]
+
+$
 
 ### Product rule
 
@@ -285,13 +331,17 @@ Three nested loops with iteration counts m, n, and p often give O(mnp).
 
 ### Ignore constants and lower-order terms
 
-\[
-O(5n)=O(n)
-\]
+$
 
-\[
+O(5n)=O(n)
+
+$
+
+$
+
 O(n^2+n+10)=O(n^2)
-\]
+
+$
 
 The fastest-growing term dominates as n becomes large.
 
@@ -328,9 +378,11 @@ def no_duplicates(L):
 
 Each unordered pair is compared at most once. If no duplicates exist, the comparison count is:
 
-\[
+$
+
 (n-1)+(n-2)+\cdots+2+1=\frac{n(n-1)}2
-\]
+
+$
 
 - **Worst-case time:** Θ(n²).
 - **Best-case time:** Θ(1) if a duplicate is found in the first comparison (for a list with at least two elements).
@@ -373,9 +425,11 @@ def number_of_bits(n):
 
 For a positive integer n, the number of binary digits is:
 
-\[
+$
+
 \lfloor\log_2 n\rfloor+1
-\]
+
+$
 
 - Measured against the numeric value n, the loop takes Θ(log n) iterations.
 - If input size is the number of binary digits b, the algorithm takes Θ(b) iterations.
@@ -399,38 +453,48 @@ Let M(n) be the minimum number of moves.
 
 Base case:
 
-\[
+$
+
 M(1)=1
-\]
+
+$
 
 Recurrence:
 
-\[
+$
+
 M(n)=M(n-1)+1+M(n-1)=2M(n-1)+1
-\]
+
+$
 
 Expanding:
 
-\[
+$
+
 \begin{aligned}
 M(n)&=2M(n-1)+1\\
 &=4M(n-2)+3\\
 &=8M(n-3)+7\\
 &=\cdots=2^n-1
 \end{aligned}
-\]
+
+$
 
 Thus:
 
-\[
+$
+
 \boxed{M(n)=2^n-1}
-\]
+
+$
 
 For five disks:
 
-\[
+$
+
 M(5)=2^5-1=31\text{ moves}
-\]
+
+$
 
 The number of moves is Θ(2ⁿ), so the algorithm grows exponentially.
 
@@ -438,9 +502,11 @@ The number of moves is Θ(2ⁿ), so the algorithm grows exponentially.
 
 Each step discards approximately half of the remaining interval.
 
-\[
+$
+
 T(n)=T(n/2)+\Theta(1)
-\]
+
+$
 
 The number of levels is approximately log₂ n, so time is Θ(log n). A recursive implementation uses Θ(log n) stack space; an iterative implementation can use Θ(1) auxiliary space.
 
@@ -448,9 +514,11 @@ The number of levels is approximately log₂ n, so time is Θ(log n). A recursiv
 
 Merge sort recursively sorts two halves and merges them in linear time.
 
-\[
+$
+
 T(n)=2T(n/2)+\Theta(n)
-\]
+
+$
 
 There are Θ(log n) levels and Θ(n) work per level, giving Θ(n log n) time.
 
