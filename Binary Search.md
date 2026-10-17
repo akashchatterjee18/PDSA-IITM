@@ -203,7 +203,7 @@ Every step reduces the search space by approximately half.
 | 1 | \(n/2\) |
 | 2 | \(n/4\) |
 | 3 | \(n/8\) |
-| \k\ | \(n/2^k\) |
+| k | \(n/2^k\) |
 
 This is why binary search is much faster than linear search for large, sorted lists.
 
