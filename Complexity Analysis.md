@@ -59,6 +59,8 @@ The entries below show the approximate number of steps for common growth functio
 
 *The 2ⁿ and n! columns are order-of-magnitude approximations, not exact values. The factorial estimates use Stirling's approximation.*
 
+<img width="621" height="428" alt="image" src="https://github.com/user-attachments/assets/b17b55e8-9208-40cd-be35-7220fcb74ffd" />
+
 **How to read the table:**
 
 - log₂ n grows very slowly. It is the number of times n can be halved before reaching about 1.
