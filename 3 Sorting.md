@@ -257,7 +257,7 @@ $$
 Thus, the time complexity is linear:
 
 $$
-TI(n) is O(n)
+TI(n) \in O(n)
 $$
 
 ### Time Complexity of `ISort`
