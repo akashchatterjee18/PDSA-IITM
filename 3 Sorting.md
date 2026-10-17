@@ -1,6 +1,6 @@
 # Sorting Algorithms
 
-## 1. Sorting a List
+## Sorting a List
 
 Sorting a list makes many other computations easier, such as:
 
@@ -9,7 +9,7 @@ Sorting a list makes many other computations easier, such as:
 -   Checking for duplicates
 -   Building a frequency table of values
 
-## 2. How Do We Sort a List?
+## How Do We Sort a List?
 
 ### Problem
 
@@ -17,7 +17,7 @@ I am the TA for a course. The instructor has a pile of evaluated exam
 papers in random order. My task is to arrange the papers in descending
 order of marks.
 
-## 3. Selection Sort
+## Selection Sort
 
 ### Strategy 1: Selecting the Minimum Repeatedly
 
@@ -101,7 +101,7 @@ $$
 
 Selection Sort uses (O(1)) auxiliary space when implemented in place.
 
-## 4. Insertion Sort
+## Insertion Sort
 
 ### Strategy 2: Inserting Each Paper into Its Correct Position
 
@@ -152,12 +152,7 @@ def InsertionSort(L):
 
 The iterative version updates the original list in place.
 
-## 5. Recursive Insertion Sort
-
-### Helper Function: `Insert(L, v)`
-
-The function inserts `v` into an already sorted list `L` and returns a
-new sorted list.
+### Recursive Insertion Sort and Recursive Sorting Function: Python Code
 
 ``` python
 def Insert(L, v):
@@ -170,11 +165,7 @@ def Insert(L, v):
         return L + [v]
     else:
         return Insert(L[:-1], v) + [L[-1]]
-```
 
-### Recursive Sorting Function: `ISort(L)`
-
-``` python
 def ISort(L):
     n = len(L)
 
@@ -190,7 +181,7 @@ def ISort(L):
 -   The **iterative Insertion Sort** updates the original list.
 -   The **recursive version** returns a new sorted list.
 
-## 6. Analysis of Iterative Insertion Sort
+## Analysis of Iterative Insertion Sort
 
 ### Correctness
 
@@ -229,44 +220,44 @@ The worst-case time complexity of iterative Insertion Sort is (O(n\^2)).
 Its best-case time complexity is (O(n)), when the list is already
 sorted.
 
-## 7. Analysing the Recursive Functions
+## Analysing the Recursive Functions
 
 Let:
 
--   (T_I(n)) be the time taken by `Insert` for a list of size `n`.
--   (T_S(n)) be the time taken by `ISort` for a list of size `n`.
+-   (TI(n)) be the time taken by `Insert` for a list of size `n`.
+-   (TS(n)) be the time taken by `ISort` for a list of size `n`.
 
 ### Time Complexity of `Insert`
 
 Base case:
 
 $$
-T_I(0) = 1
+TI(0) = 1
 $$
 
 In each recursive call, `Insert` removes the last element from the list
 and performs a constant amount of additional work.
 
 $$
-T_I(n) = T_I(n-1) + 1
+TI(n) = TI(n-1) + 1
 $$
 
 Expanding the recurrence,
 
 $$
-T_I(n) = T_I(n-2) + 1 + 1
+TI(n) = TI(n-2) + 1 + 1
 $$
 
 Continuing,
 
 $$
-T_I(n) = T_I(0) + n
+TI(n) = TI(0) + n
 $$
 
 Thus, the time complexity is linear:
 
 $$
-T_I(n) \in O(n)
+TI(n) is O(n)
 $$
 
 ### Time Complexity of `ISort`
@@ -274,30 +265,30 @@ $$
 Base case:
 
 $$
-T_S(0) = 1
+TS(0) = 1
 $$
 
 Each call to `ISort` recursively sorts a list of size `n-1`, then calls
 `Insert` on a list of size `n-1`.
 
 $$
-T_S(n) = T_S(n-1) + T_I(n-1)
+TS(n) = TS(n-1) + TI(n-1)
 $$
 
-Since (T_I(n) `\in `{=tex}O(n)), expanding the recurrence gives:
+Since $T_I(n) \in O(n)$, expanding the recurrence gives:
 
 $$
-T_S(n) = 1 + 2 + \cdots + (n-1) + \text{constant work}
+TS(n) = 1 + 2 + \cdots + (n-1) + \text{constant work}
 $$
 
 Using the arithmetic-series formula,
 
 $$
-T_S(n) \approx \frac{n(n-1)}{2}
+TS(n) \approx \frac{n(n-1)}{2}
 $$
 
 Therefore,
 
 $$
-T_S(n) \in O(n^2)
+TS(n) \in O(n^2)
 $$
