@@ -99,12 +99,12 @@ At each recursive call, the search interval is approximately halved.
 | Case | Time complexity |
 |---|---|
 | Best case | \(O(1)\) |
-| Average case | \(O(\log n)\) |
-| Worst case | \(O(\log n)\) |
+| Average case | \(O(log n)\) |
+| Worst case | \(O(log n)\) |
 
-The number of halvings required to reduce a list of length \(n\) to a constant-sized interval is proportional to \(\log_2 n\).
+The number of halvings required to reduce a list of length \(n\) to a constant-sized interval is proportional to \(log n\).
 
-- **Auxiliary space complexity:** \(O(\log n)\) for the recursive call stack.
+- **Auxiliary space complexity:** \(O(log n)\) for the recursive call stack.
 - **Additional allocation:** List slicing creates temporary lists. An iterative implementation avoids recursive calls and repeated slicing.
 
 ---
