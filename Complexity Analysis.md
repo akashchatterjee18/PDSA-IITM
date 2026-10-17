@@ -2,7 +2,7 @@
 
 > Consolidated notes from the lecture notebook: algorithmic efficiency, growth rates, asymptotic notation, iterative analysis, and recurrences.
 
-## 1. What Is Complexity?
+## What Is Complexity?
 
 Complexity analysis studies how an algorithm's resource usage grows with input size.
 
@@ -12,7 +12,7 @@ Complexity analysis studies how an algorithm's resource usage grows with input s
 
 Actual runtime depends on hardware, language, implementation, and other factors. Complexity analysis compares growth rates rather than relying only on seconds.
 
-## 2. Measuring Running Time
+## Measuring Running Time
 
 - Analyse the algorithm independently of the underlying hardware.
 - Count basic operations such as comparisons, assignments, arithmetic operations, and data accesses.
@@ -27,7 +27,7 @@ For example, searching an unsorted list may stop early if a target is near the b
 - Graph: often described using vertices V and edges E.
 - Positive integer N: its binary input length is floor(log₂ N) + 1, not N itself.
 
-## 3. Common Growth Rates
+## Common Growth Rates
 
 From slower growth to faster growth for large n:
 
@@ -69,7 +69,7 @@ The entries below show the approximate number of steps for common growth functio
 
 Quadratic and cubic algorithms become impractical quickly as n grows.
 
-## 4. Real-World Motivation: Matching Aadhaar Records and SIM Records
+## Real-World Motivation: Matching Aadhaar Records and SIM Records
 
 Suppose there are 10⁹ Aadhaar records and 10⁹ SIM records, and we want to identify matching records. This is a simplified algorithm-analysis illustration, not a model of an actual identity system.
 
@@ -107,7 +107,7 @@ At 10⁷ operations per second, this is about 3,000 seconds, or **50 minutes**, 
 
 **Lesson:** a better algorithm can matter far more than simply using faster hardware.
 
-## 5. Real-World Motivation: Closest Pair of Points
+## Real-World Motivation: Closest Pair of Points
 
 Given n points on a screen, find the pair with the smallest distance.
 
@@ -141,7 +141,7 @@ This is dramatically fewer operations than about 5 × 10⁹ pair comparisons.
 
 A 4000 × 2000 image has 8 × 10⁶ pixel positions. Treating every pixel as a point would make a naive all-pairs algorithm especially expensive.
 
-## 6. Asymptotic Notation
+## Asymptotic Notation
 
 Asymptotic notation describes growth as input size becomes large. It does not predict exact runtime.
 
