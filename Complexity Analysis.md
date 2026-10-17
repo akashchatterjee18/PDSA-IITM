@@ -46,13 +46,26 @@ Constants and implementation details can still matter for small inputs.
 
 ### Example growth table
 
-| Input n | log₂ n | n | n log₂ n | n² | n³ |
-|---:|---:|---:|---:|---:|---:|
-| 10 | 3.32 | 10 | 33 | 100 | 1,000 |
-| 10² | 6.64 | 100 | 664 | 10⁴ | 10⁶ |
-| 10³ | 9.97 | 10³ | ≈ 10⁴ | 10⁶ | 10⁹ |
-| 10⁴ | 13.29 | 10⁴ | ≈ 1.3 × 10⁵ | 10⁸ | 10¹² |
-| 10⁶ | 19.93 | 10⁶ | ≈ 2.0 × 10⁷ | 10¹² | 10¹⁸ |
+The entries below show the approximate number of steps for common growth functions. Values such as 2ⁿ and n! become enormous very quickly, so scientific notation is used.
+
+| Input n | log₂ n | n | n log₂ n | n² | n³ | 2ⁿ (approx.) | n! (approx.) |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 10 | 3.32 | 10 | 33 | 10² | 10³ | 10³ | 10⁶ |
+| 10² | 6.64 | 10² | 664 | 10⁴ | 10⁶ | 10³⁰ | 10¹⁵⁸ |
+| 10³ | 9.97 | 10³ | ≈ 10⁴ | 10⁶ | 10⁹ | 10³⁰¹ | 10²⁵⁶⁸ |
+| 10⁴ | 13.29 | 10⁴ | ≈ 1.3 × 10⁵ | 10⁸ | 10¹² | 10³⁰¹⁰ | 10³⁵⁶⁶⁰ |
+| 10⁵ | 16.61 | 10⁵ | ≈ 1.7 × 10⁶ | 10¹⁰ | 10¹⁵ | 10³⁰¹⁰³ | 10⁴⁵⁶⁵⁷⁴ |
+| 10⁶ | 19.93 | 10⁶ | ≈ 2.0 × 10⁷ | 10¹² | 10¹⁸ | 10³⁰¹⁰³⁰ | 10⁵⁵⁶⁵⁷⁰⁹ |
+
+*The 2ⁿ and n! columns are order-of-magnitude approximations, not exact values. The factorial estimates use Stirling's approximation.*
+
+**How to read the table:**
+
+- log₂ n grows very slowly. It is the number of times n can be halved before reaching about 1.
+- n grows proportionally to the input size.
+- n log₂ n grows faster than linear but much more slowly than quadratic.
+- n² and n³ become costly for large inputs.
+- 2ⁿ and n! explode even for relatively small inputs, making exhaustive algorithms impractical very quickly.
 
 Quadratic and cubic algorithms become impractical quickly as n grows.
 
