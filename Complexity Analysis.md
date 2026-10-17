@@ -259,7 +259,7 @@ $$
 
 No fixed constant c can make n³ ≤ cn² for all sufficiently large n, because this would require n ≤ c forever.
 
-## 7. Properties of Asymptotic Bounds
+## Properties of Asymptotic Bounds
 
 ### Sum rule
 
@@ -295,7 +295,7 @@ $$
 
 The fastest-growing term dominates as n becomes large.
 
-## 8. Analysing Iterative Programs
+## Analysing Iterative Programs
 
 ### Example 1: Find the maximum element
 
