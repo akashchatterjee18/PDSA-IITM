@@ -203,7 +203,7 @@ Every step reduces the search space by approximately half.
 | 1 | \(n/2\) |
 | 2 | \(n/4\) |
 | 3 | \(n/8\) |
-| \(k\) | \(n/2^k\) |
+| \k\ | \(n/2^k\) |
 
 This is why binary search is much faster than linear search for large, sorted lists.
 
@@ -216,7 +216,7 @@ This is why binary search is much faster than linear search for large, sorted li
 | Requires sorted list | No | Yes |
 | Search strategy | Examine elements sequentially | Repeatedly halve the search interval |
 | Best-case time | \(O(1)\) | \(O(1)\) |
-| Worst-case time | \(O(n)\) | \(O(\log n)\) |
+| Worst-case time | \(O(n)\) | \(O(log n)\) |
 | Recursive implementation required | No | No |
 | Suitable for unsorted lists | Yes | No |
 
