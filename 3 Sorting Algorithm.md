@@ -298,11 +298,11 @@ $$
 ---
 ## Merge Sort
 
-Both selection sort and insertion sort take time \\(O(n^2)\\).
+Both selection sort and insertion sort take time \(O(n^2)\).
 
-This is infeasible for \\(n > 10000\\).
+This is infeasible for \(n > 10000\).
 
-So, we need something better than \\(O(n^2)\\).
+So, we need something better than \(O(n^2)\).
 
 ## Strategy 3
 
@@ -443,13 +443,13 @@ Since
 
 $$ m+n \leq 2\max(m,n) $$
 
-and when \\(m \approx n\\), merge takes time:
+and when \(m \approx n\), merge takes time:
 
 $$ O(n) $$
 
 ## Analysis of `mergesort` Function
 
-Let \\(T(n)\\) be the time taken for input size \\(n\\).
+Let \(T(n)\) be the time taken for input size \(n\).
 
 For the base case:
 
