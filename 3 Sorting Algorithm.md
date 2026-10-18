@@ -101,6 +101,8 @@ $$
 
 Selection Sort uses (O(1)) auxiliary space when implemented in place.
 
+---
+
 ## Insertion Sort
 
 ### Strategy 2: Inserting Each Paper into Its Correct Position
@@ -292,3 +294,199 @@ Therefore,
 $$
 TS(n) \in O(n^2)
 $$
+
+---
+## Merge Sort
+
+Both selection sort and insertion sort take time \\(O(n^2)\\).
+
+This is infeasible for \\(n > 10000\\).
+
+So, we need something better than \\(O(n^2)\\).
+
+## Strategy 3
+
+- Divide the list into two halves.
+- Separately sort the left and right half.
+- Combine the two sorted halves to get a full sorted half.
+
+## Combining 2 Sorted Lists
+
+- Combine 2 sorted lists `A` and `B` into a single sorted list `C`.
+- Compare the first element of `A` and `B`.
+- Move the smaller of the two to `C`.
+- Repeat till you exhaust `A` and `B`.
+
+### Example
+
+```
+A → 32, 74, 89
+B → 21, 55, 64
+
+C → 21, 32, 55, 64, 74, 89
+```
+
+(Merging A & B)
+
+## Merge Sort
+
+- Let `n` be the length of list.
+- Sort `A[:n//2]`.
+- Sort `A[n//2:]`.
+- Merge the sorted halves into `B`.
+
+### Example
+
+```
+[43, 32, 22, 78, 63, 57, 91, 13]
+```
+
+The list is divided into halves:
+
+```
+[43, 32, 22, 78]          [63, 57, 91, 13]
+
+[43, 32] [22, 78]         [63, 57] [91, 13]
+
+[43] [32] [22] [78]       [63] [57] [91] [13]
+```
+
+The single-element lists are merged:
+
+```
+[32, 43] [22, 78]         [57, 63] [13, 91]
+```
+
+Then the sorted pairs are merged:
+
+```
+[22, 32, 43, 78]          [13, 57, 63, 91]
+```
+
+Finally:
+
+```
+[13, 22, 32, 43, 57, 63, 78, 91]
+```
+
+How do we sort `A[:n//2]` and `A[n//2:]`?
+
+→ Recursively (same strategy).
+
+## Divide & Conquer
+
+- Break up the problem into disjoint parts.
+- Solve each part separately.
+- Combine the solutions efficiently.
+
+## Merging Sorted List
+
+- Combine two sorted lists `A` & `B` into `C`.
+- If `A` is empty, copy `B` into `C`.
+- If `B` is empty, copy `A` into `C`.
+- Otherwise, compare the first elements of `A` & `B` and move the smaller one to `C`.
+
+### Merging Two Sorted Lists
+
+```python
+def merge(A, B):
+    (m, n) = (len(A), len(B))
+    (C, i, j, k) = ([], 0, 0, 0)
+
+    while k < m + n:
+        if i == m:
+            C.extend(B[j:])
+            k += n - j
+
+        elif j == n:
+            C.extend(A[i:])
+            k += m - i
+
+        elif A[i] < B[j]:
+            C.append(A[i])
+            (i, k) = (i + 1, k + 1)
+
+        else:
+            C.append(B[j])
+            (j, k) = (j + 1, k + 1)
+
+    return C
+```
+
+### Merge Sort
+
+```python
+def mergesort(A):
+    n = len(A)
+
+    if n <= 1:
+        return A
+
+    L = mergesort(A[:n//2])
+    R = mergesort(A[n//2:])
+
+    B = merge(L, R)
+    return B
+```
+
+## Analysis of `merge` Function
+
+- Merge `A` of length `m` and `B` of length `n`.
+- Output list `C` has `m+n` elements.
+- In each iteration, we add at least one element to `C`.
+
+Hence, merge takes time:
+
+$$ O(m+n) $$
+
+Since
+
+$$ m+n \leq 2\max(m,n) $$
+
+and when \\(m \approx n\\), merge takes time:
+
+$$ O(n) $$
+
+## Analysis of `mergesort` Function
+
+Let \\(T(n)\\) be the time taken for input size \\(n\\).
+
+For the base case:
+
+$$ T(1)=1 $$
+
+Recurrence:
+
+$$ T(n)=2T(n/2)+n $$
+
+Expanding:
+
+$$ T(n)=2\left[2T(n/4)+n/2\right]+n $$
+
+$$ T(n)=4T(n/4)+2n $$
+
+Continuing:
+
+$$ T(n)=2^kT(n/2^k)+kn $$
+
+Since
+
+$$ 2^k=n $$
+
+we get
+
+$$ k=\log_2 n $$
+
+Therefore,
+
+$$ T(n)=n+kn $$
+
+$$ T(n)=n(k+1) $$
+
+$$ T(n)=n(\log_2 n+1) $$
+
+Thus,
+
+$$ T(n)=O(n\log n) $$
+
+Note: Merge needs to create a new list to hold the merged elements.
