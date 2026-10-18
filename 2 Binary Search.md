@@ -18,7 +18,7 @@ The naive approach scans the list element by element until the target is found o
 **Python implementation:**
 
 ```python
-def naive_search(v, L):
+def naivesearch(v, L):
     for x in L:
         if v == x:
             return True
@@ -74,7 +74,7 @@ Instead of checking every element, binary search repeatedly divides the search i
 ### Recursive Implementation
 
 ```python
-def binary_search(v, L):
+def binarysearch(v, L):
     if L == []:
         return False
 
@@ -84,9 +84,9 @@ def binary_search(v, L):
         return True
 
     if v < L[m]:
-        return binary_search(v, L[:m])
+        return binarysearch(v, L[:m])
 
-    return binary_search(v, L[m + 1:])
+    return binarysearch(v, L[m + 1:])
 ```
 
 
