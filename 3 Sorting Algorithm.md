@@ -443,7 +443,7 @@ Since
 
 $$ m+n \leq 2\max(m,n) $$
 
-and when \(m \approx n\), merge takes time:
+and when \(m approx n\), merge takes time:
 
 $$ O(n) $$
 
