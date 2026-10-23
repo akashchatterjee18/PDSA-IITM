@@ -297,3 +297,40 @@ Output:
 ```python
 [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
 ```
+
+# NumPy Arrays
+
+- The NumPy library provides arrays as a basic type.
+
+```python
+import numpy as np
+
+zeromatrix = np.zeros(shape=(3, 3))
+```
+
+- Can create an array from any sequence type.
+
+```python
+newarray = np.array([[0, 1], [1, 0]])
+```
+
+- arange is the equivalent of range for lists.
+
+```python
+row2 = np.arange(5)
+```
+
+Output:
+
+```python
+[0, 1, 2, 3, 4]
+```
+
+- Can operate on a matrix as a whole.
+
+```python
+C = 3 * A + B
+C = np.matmul(A, B)
+```
+
+NumPy arrays are easier to use.
