@@ -334,3 +334,67 @@ C = np.matmul(A, B)
 ```
 
 NumPy arrays are easier to use.
+---
+
+# Dictionary
+
+- An array/list allows access through positional indices.
+
+  Example: `A[i]` or `A[k][l]`
+
+- A dictionary allows access through arbitrary keys.
+  - A collection of key-value pairs.
+  - Random access: access time is the same for all keys.
+
+# Implementing a Dictionary
+
+- The underlying storage is an array.
+- Keys have to be mapped to `{0, 1, ..., n-1}`.
+  - Given a key `k`, convert it to an offset `i`.
+
+## Hash Function
+
+- `h: S → X` maps a set of values `S` to a small range of integers `X = {0, 1, ..., n-1}`.
+- Typically, `|X| << |S|`, so there will be collisions: `h(s) = h(s')` where `s ≠ s'`.
+- A good hash function will minimise the collisions.
+
+## Collision
+
+More keys than array indices, so different keys can map to the same index.
+
+- SHA-256 is an industry-standard hashing function whose range is 256 bits.
+  - Used to hash large files; avoids uploading duplicates to cloud storage.
+
+```text
+256 bits → 2^256 ≈ (1024)^25 ≈ 10^75 almost
+```
+
+# Hash Table
+
+- An array `A` of size `n` combined with a hash function `h`.
+- `h` maps keys to `{0, 1, ..., n-1}`.
+- Ideally, when we create an entry for key `k`, `A[h(k)]` will be unused.
+
+- But what if it is already preoccupied?
+
+## Dealing with Collisions
+
+### 1. Open Addressing (Closed Hashing)
+
+- When a collision happens, you must find another empty slot within the same array.
+- Suppose your hash function `h` gives index `i`, but the slot is preoccupied. So we will look for another slot by keeping probing alternative slots and continue till you find an empty slot.
+- So we create an array with extra slots so that even after these collisions we have extra space.
+
+### 2. Open Hashing
+
+- In open hashing, we don't store value in the array; instead, for each position in the array, we maintain a list.
+- The hash table is only a collection of pointers; the actual storage occurs somewhere outside the hash table, in the list.
+
+- Dictionary keys in Python must be immutable.
+  - If value changes, hash also changes.
+
+So,
+
+Dictionaries are implemented as hash tables.
+
+Creating a good hash function is important and hard.
