@@ -242,3 +242,58 @@ def deletei(self, v):
 
     return
 ```
+
+# Lists in Python
+
+- Python lists are not implemented as flexible linked lists.
+- Python lists use dynamic arrays, not linked nodes.
+- Python allocates a fixed block of memory when we create a list to store references to the list's elements.
+- When the allocated size runs out, Python allocates a larger block of memory.
+- Keeps track of the last position of the list in the array.
+- l.append() and l.pop() are constant time: O(1).
+- Insertion and deletion require time O(n).
+  - Middle of an array.
+- Effectively, Python lists behave more like arrays than lists.
+
+# Arrays vs Lists in Python
+
+- Arrays are useful for representing matrices.
+- In list notation, these are nested lists.
+
+```python
+[[0, 1], [1, 2]]
+```
+
+- Need to be careful when initializing a multidimensional list.
+
+```python
+zerolist = [0, 0, 0]
+zeromatrix = [zerolist, zerolist, zerolist]
+```
+
+```python
+zeromatrix[1][1] = 1
+print(zeromatrix)
+```
+
+Output:
+
+```python
+[[0, 1, 0], [0, 1, 0], [0, 1, 0]]
+```
+
+Because mutability aliases different values: two variables refer to the same object.
+
+But, if we use list comprehension to create the zero matrix, only the intended element will modify.
+
+```python
+zeromatrix = [[0 for i in range(3)] for j in range(3)]
+zeromatrix[1][1] = 1
+print(zeromatrix)
+```
+
+Output:
+
+```python
+[[0, 0, 0], [0, 1, 0], [0, 0, 0]]
+```
