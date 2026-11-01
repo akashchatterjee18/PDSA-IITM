@@ -52,18 +52,18 @@ Eg:- Kumar – Feroze – Colin – Aziz – Priya – Feroze – Sheila
 
 ---
 
-# Reachability.
+## Reachability.
 
 Reachability is the property of graph that tells us whether we can travel from one vertex (node) to another by following the edges.
 
 → A vertex v is reachable from vertex u, if there exists a path from u to v.
 
-→ Airline routes.
+→ Airline routes
 
-**How can I fly from Madurai (v₄) to Delhi (v₀)**
+<img width="271" height="267" alt="image" src="https://github.com/user-attachments/assets/ae3e0e83-1d36-4675-b6bd-d3bbdc7a57d8" />
 
-### Typical Questions
-
+**How can I fly from Madurai (v₉) to Delhi (v₀)**
+Typical Questions
 - Is v reachable from u?
 - Shortest path from u to v?
 - What are the vertices reachable from u?
@@ -71,7 +71,7 @@ Reachability is the property of graph that tells us whether we can travel from o
 
 ---
 
-# Map colouring.
+## Map colouring.
 
 → Assign each state a colour.
 
@@ -82,3 +82,106 @@ Reachability is the property of graph that tells us whether we can travel from o
 - Create a graph where each state is a vertex and connect states that share a border.
 - Assign colours to nodes, so that endpoints of an edge have different colours.
 - Only need the underlying graph.
+
+## Graph Colouring
+
+We are given a graph G = (V, E) and a set of colours C and we need to assign a colour to every vertex such that no pair of adjacent vertices have the same colour.
+
+Colouring is a fⁿ: c: V → C such that (u,v) ∈ E ⇒ c(u) ≠ c(v)
+
+G = (V, E).
+
+What is the smallest set of colours need to colour G?
+
+Four Colour Theorem (for planar graphs)
+
+So, for planar graphs, we can colour all vertices such that no pair of adjacent vertices with four colours (at max).
+
+If the graph is non planar, there is no efficient algorithm known.
+
+## Chromatic No.
+
+Minimum No. of colours required to colour the whole graph.
+
+- If a graph is circuit with n vertices then
+  - it is 2-chromatic, if n is even.
+  - it is 3-chromatic, if n is odd.
+
+
+# Vertex Cover
+
+→ Suppose, a hotel wants to install security cameras.
+
+→ All corridors are straight lines.
+
+→ Camera can monitor all corridors that meet at an intersection.
+
+<img width="192" height="170" alt="image" src="https://github.com/user-attachments/assets/9b007b6a-ded4-49b3-bba5-563244ac7c6e" />
+
+→ How many cameras needed (minimum)?
+
+<img width="252" height="245" alt="image" src="https://github.com/user-attachments/assets/de0d8f87-9e13-4d4b-9fa8-e0773079905d" />
+
+• So, if I put a camera on V₁ & V₂,
+  all the corridors could be monitored.
+
+∴ 2
+
+
+# Independent Set
+
+• A dance school puts up group dances.
+
+Each dance has a set of dancers.
+
+Set of dancers may overlap across dances.
+
+V → Dances.
+E → Set of dancers overlap.
+
+Since, each dancer performs at most once.
+
+Maximum no. of dance possible??
+
+<img width="252" height="256" alt="image" src="https://github.com/user-attachments/assets/fb827821-9093-47fc-9349-5f888380688a" />
+
+So, if we choose (V₄) → V₈, V₁, V₃ → should not overlap.
+
+We can choose (V₅) → V₆ → (V₁, V₂) → already not scheduled.
+
+Then we can choose (V₇) → (V₃, V₈, V₆) → already not scheduled.
+
+We can choose (V₂) now.
+
+∴ 1st day, V₂, V₄, V₅, V₇
+
+2nd day → V₁, V₃, V₆, V₈.
+
+∴ The max no. of dance possible is 4.
+
+Independent Set: Subset of vertices such that no two are connected by an edge.
+
+
+# Matching
+
+Class projects can be done by one or two people.
+
+If two people, they must be friends.
+
+V → People
+E → Friendship
+
+<img width="287" height="165" alt="image" src="https://github.com/user-attachments/assets/91e1c2a1-4c3f-4312-bd36-8ffc317812f3" />
+
+
+Find a good allocation of groups.
+
+↳ G = (V, E) is an undirected graph.
+
+↳ A matching is a subset M ⊆ E of mutually disjoint edges.
+
+To find a good allocation of groups, find maximal matching in G.
+
+So,
+
+(V₀, V₂), (V₁, V₃) & (V₄, V₅).
