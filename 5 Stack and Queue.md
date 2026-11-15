@@ -1,4 +1,3 @@
-# Supported documents for week 3 assignments.
 
 ## Stack
 
